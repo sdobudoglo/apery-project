@@ -3,3 +3,16 @@
  Autor      Sergey Dobudoglo
  copyright  2014
 ******************************/
+
+This documents containg main goals and reasons for apery-project accordign to the business.
+
+The target audience of the apery-project could be small or medium size business which reqire CRM system posibilities.
+System is based on the module architecture whick allow to create different configurations (module combinations) for
+different business needs.
+
+Main goals:
+
+1. Opportunity to manage customers database in different context (ex. discont program).
+2. Sales management posibilities.
+3. Analize database information (grafics, diograms, reports).
+4. Support different roles for users.
