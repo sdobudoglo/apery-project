@@ -8,7 +8,7 @@
 #define APPLICATION_H
 
 
-#include <QAppliaction>
+#include <QApplication>
 
 #include "base_types.h"
 
@@ -22,12 +22,12 @@ public:
     AStringList getArguments();
 
 private:
-    ASharedPointer<QApplication> app;
+    ASharedPointer<QApplication>::type app;
 };
 
 Application::Application(int argc, char * argv[])
 {
-    app = ASharedPointer<QApplication>(new QApplication(argc, argv));
+    app = ASharedPointer<QApplication>::type(new QApplication(argc, argv));
 }
 
 Application::~Application()
@@ -38,12 +38,12 @@ Application::~Application()
 
 int Application::execute()
 {
-    return app.exec();
+    return app->exec();
 }
 
 AStringList Application::getArguments()
 {
-    return app.arguments();
+    return app->arguments();
 }
 
 
