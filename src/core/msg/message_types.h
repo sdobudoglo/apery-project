@@ -7,29 +7,32 @@
 #ifndef MESSAGE_TYPES_H
 #define MESSAGE_TYPES_H
 
-enum EventPriority
+struct EventTypeSpec
 {
-    Hight = 0,
-    Middle,
-    Low
-};
+    enum EventPriority
+    {
+        Hight = 0,
+        Middle,
+        Low
+    };
 
-enum GlobalEventType
-{
-    DBEvent = 0,
-    UIEvent
-};
+    enum GlobalEventType
+    {
+        DBEvent = 0,
+        UIEvent
+    };
 
-enum DBEventType
-{
-    GetDataEvent = 0,
-    SetDataEvent,
-    ExecuteRequestEvent
-};
+    enum DBEventType
+    {
+        GetDataEvent = 0,
+        SetDataEvent,
+        ExecuteRequestEvent
+    };
 
-enum UIEventType
-{
-    UnlockStartScreenEvent = 0
-};
+    enum UIEventType
+    {
+        UnlockStartScreenEvent = 0
+    };
 
+};
 #endif /*MESSAGE_TYPES_H*/

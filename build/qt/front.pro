@@ -23,21 +23,25 @@ INCLUDEPATH += \
     $$ROOT_SRC_DIR/core/msg
 
 HEADERS += \
-    $$ROOT_SRC_DIR/core/queue/queue.h \
     $$ROOT_SRC_DIR/core/loader/loader.h \
     $$ROOT_SRC_DIR/core/loader/front_loader.h \
+    $$ROOT_SRC_DIR/core/loader/constants.h \
     $$ROOT_SRC_DIR/third_party/qt/base_types.h \
     $$ROOT_SRC_DIR/third_party/qt/application.h \
-    $$ROOT_SRC_DIR/core/queue/queue_storage.h \
     $$ROOT_SRC_DIR/core/msg/message_event.h \
-    $$ROOT_SRC_DIR/core/msg/message_types.h
+    $$ROOT_SRC_DIR/core/msg/message_types.h \
+    $$ROOT_SRC_DIR/core/queue/queue_storage.h \
+    $$ROOT_SRC_DIR/core/queue/queue.h \
+    $$ROOT_SRC_DIR/core/queue/queue_front.h \
+    $$ROOT_SRC_DIR/core/queue/queue_manager.h
 
 SOURCES += \
     $$ROOT_SRC_DIR/core/loader/main.cpp \
-    $$ROOT_SRC_DIR/core/queue/queue.cpp \
     $$ROOT_SRC_DIR/core/loader/front_loader.cpp \
+    $$ROOT_SRC_DIR/core/msg/message_event.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_storage.cpp \
-    $$ROOT_SRC_DIR/core/msg/message_event.cpp
+    $$ROOT_SRC_DIR/core/queue/queue_front.cpp \
+    $$ROOT_SRC_DIR/core/queue/queue_manager.cpp
 
 
 # afront global defines

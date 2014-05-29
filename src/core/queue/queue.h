@@ -9,19 +9,20 @@
 
 #include "base_types.h"
 #include "queue_storage.h"
+#include "queue_manager.h"
 
 class IQueue
 {
 public:
+    virtual static ASharedPointer<IQueue>::type getQueue() = 0;
+    virtual void pushEvent(IMessageEvent* event) = 0;
+
+protected:
     IQueue(){}
     virtual ~IQueue(){}
 
-    virtual void pushEventMsg() = 0;
-
 protected:
-    //AList<QueueManager>::type m_managerList;
-    //ASharedPointer<HandleMapper>::type m_handleMapper;
-    //ASharedPointer<QueueStorage>::type m_queue;
+    ASharedPointer<IQueue>::type m_queue;
 };
 
 #endif /*QUEUE_H*/

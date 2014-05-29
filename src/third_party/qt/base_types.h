@@ -15,6 +15,10 @@
 #include <QString>
 #include <QVariant>
 #include <QVariantMap>
+#include <QThread>
+#include <QMutex>
+#include <QMutexLocker>
+#include <QTimer>
 
 /* containers */
 template<typename TypeName>
@@ -50,17 +54,24 @@ struct ASharedPointer
 /* base qt types */
 typedef QString AString;
 typedef QVariant AVariant;
+typedef QTimer ATimer;
+typedef QObject AObject;
+#define CONNECTED_METHOD(SlotName) SLOT(SlotName)
+#define CONNECTED_METHODS slots
 
 
 /* multithreading */
 typedef QThread AThread;
+typedef QMutex AMutex;
+typedef QMutexLocker AMutexLocker;
 
 
 /* local types */
-typedef quint32 EventType;
 
 
 /* events */
 typedef void (*EventFinishCbk)();
+typedef quint32 EventType;
+
 
 #endif /*BASE_TYPES_H*/

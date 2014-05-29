@@ -10,23 +10,23 @@
 #include "base_types.h"
 #include "message_event.h"
 
-class QueueStorage
+class QueueStorage : public AMutex
 {
 public:
     static ASharedPointer<QueueStorage>::type getStorage();
+    static void clear();
 
-    virtual IMessageEvent dequeueEvent();
-    virtual void enqueueEvent(IMessageEvent event);
+    IMessageEvent* dequeueEvent();
+    void enqueueEvent(IMessageEvent* event);
 
 private:
-    QueueStorage(){}
-    ~QueueStorage(){}
+    QueueStorage();
 
     static ASharedPointer<QueueStorage>::type storage;
 
-    AQueue<IMessageEvent> m_hightQueue;
-    AQueue<IMessageEvent> m_middleQueue;
-    AQueue<IMessageEvent> m_lowQueue;
+    AQueue<IMessageEvent*>::type m_hightQueue;
+    AQueue<IMessageEvent*>::type m_middleQueue;
+    AQueue<IMessageEvent*>::type m_lowQueue;
 };
 
 #endif /*QUEUE_STORAGE_H*/

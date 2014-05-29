@@ -6,7 +6,7 @@
 
 #include "message_event.h"
 
-IMessageEvent::IMessageEvent(EventType gl_type, EventType type, EventPriority priority, AVariant data, bool has_return, EventFinishCbk event_cbk) : m_globalType(gl_type)
+IMessageEvent::IMessageEvent(EventType group_type, EventType type, EventTypeSpec::EventPriority priority, AVariant data, bool has_return, EventFinishCbk event_cbk) : m_groupType(group_type)
   , m_type(type)
   , m_data(data)
   , m_hasReturn(has_return)
