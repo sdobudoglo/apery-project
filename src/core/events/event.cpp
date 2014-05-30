@@ -4,9 +4,9 @@
  copyright  2014
 ******************************/
 
-#include "message_event.h"
+#include "event.h"
 
-IMessageEvent::IMessageEvent(EventType group_type, EventType type, EventTypeSpec::EventPriority priority, AVariant data, bool has_return, EventFinishCbk event_cbk) : m_groupType(group_type)
+IEvent::IEvent(EventType group_type, EventType type, EventTypeSpec::EventPriority priority, AVariant data, bool has_return, EventFinishCbk event_cbk) : m_groupType(group_type)
   , m_type(type)
   , m_data(data)
   , m_hasReturn(has_return)
@@ -14,5 +14,5 @@ IMessageEvent::IMessageEvent(EventType group_type, EventType type, EventTypeSpec
   , m_priority(priority)
 {}
 
-IMessageEvent::~IMessageEvent()
+IEvent::~IEvent()
 {}

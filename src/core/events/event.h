@@ -4,17 +4,17 @@
  copyright  2014
 ******************************/
 
-#ifndef MESSAGE_EVENT_H
-#define MESSAGE_EVENT_H
+#ifndef EVENT_H
+#define EVENT_H
 
 #include "base_types.h"
-#include "message_types.h"
+#include "event_types.h"
 
-class IMessageEvent
+class IEvent
 {
 public:
-    IMessageEvent(EventType group_type, EventType type, EventTypeSpec::EventPriority priority, AVariant data = 0, bool has_return = false, EventFinishCbk event_cbk = 0);
-    virtual ~IMessageEvent();
+    IEvent(EventType group_type, EventType type, EventTypeSpec::EventPriority priority, AVariant data = 0, bool has_return = false, EventFinishCbk event_cbk = 0);
+    virtual ~IEvent();
 
     AVariant eventResultValue() {return m_resultValue;}
     bool eventHasReturn() { return m_hasReturn; }
@@ -34,4 +34,4 @@ protected:
     EventTypeSpec::EventPriority m_priority;
 };
 
-#endif /*MESSAGE_EVENT_H*/
+#endif /*EVENT_H*/

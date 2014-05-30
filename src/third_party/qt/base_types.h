@@ -19,6 +19,7 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QTimer>
+#include <QObject>
 
 /* containers */
 template<typename TypeName>
@@ -54,10 +55,7 @@ struct ASharedPointer
 /* base qt types */
 typedef QString AString;
 typedef QVariant AVariant;
-typedef QTimer ATimer;
 typedef QObject AObject;
-#define CONNECTED_METHOD(SlotName) SLOT(SlotName)
-#define CONNECTED_METHODS slots
 
 
 /* multithreading */

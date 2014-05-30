@@ -14,15 +14,10 @@
 class IQueue
 {
 public:
-    virtual static ASharedPointer<IQueue>::type getQueue() = 0;
-    virtual void pushEvent(IMessageEvent* event) = 0;
-
-protected:
     IQueue(){}
     virtual ~IQueue(){}
 
-protected:
-    ASharedPointer<IQueue>::type m_queue;
+    virtual void pushEvent(IEvent* event) = 0;
 };
 
 #endif /*QUEUE_H*/

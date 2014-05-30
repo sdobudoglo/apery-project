@@ -8,7 +8,7 @@
 #define CONSTANTS_H
 
 /* queue event constants */
-static const int EventManagerWaitPeriod = 1000;
+static const int EventManagerWaitPeriod = 10;
 static const int QueueFrontManagetAmount = 2;
 static const int QueueBackManagetAmount = 4;
 

@@ -8,7 +8,7 @@
 #define QUEUE_STORAGE_H
 
 #include "base_types.h"
-#include "message_event.h"
+#include "event.h"
 
 class QueueStorage : public AMutex
 {
@@ -16,17 +16,17 @@ public:
     static ASharedPointer<QueueStorage>::type getStorage();
     static void clear();
 
-    IMessageEvent* dequeueEvent();
-    void enqueueEvent(IMessageEvent* event);
+    IEvent* dequeueEvent();
+    void enqueueEvent(IEvent* event);
 
 private:
     QueueStorage();
 
     static ASharedPointer<QueueStorage>::type storage;
 
-    AQueue<IMessageEvent*>::type m_hightQueue;
-    AQueue<IMessageEvent*>::type m_middleQueue;
-    AQueue<IMessageEvent*>::type m_lowQueue;
+    AQueue<IEvent*>::type m_hightQueue;
+    AQueue<IEvent*>::type m_middleQueue;
+    AQueue<IEvent*>::type m_lowQueue;
 };
 
 #endif /*QUEUE_STORAGE_H*/

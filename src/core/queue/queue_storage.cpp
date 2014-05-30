@@ -30,11 +30,11 @@ void QueueStorage::clear()
         storage.clear();
 }
 
-IMessageEvent* QueueStorage::dequeueEvent()
+IEvent* QueueStorage::dequeueEvent()
 {
     AMutexLocker locker(this);
 
-    IMessageEvent* event = 0;
+    IEvent* event = 0;
     if (!m_hightQueue.empty())
     {
         event = m_hightQueue.dequeue();
@@ -49,7 +49,7 @@ IMessageEvent* QueueStorage::dequeueEvent()
     return event;
 }
 
-void QueueStorage::enqueueEvent(IMessageEvent* event)
+void QueueStorage::enqueueEvent(IEvent* event)
 {
     AMutexLocker locker(this);
 

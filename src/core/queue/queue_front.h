@@ -13,12 +13,15 @@
 class QueueFront : public IQueue
 {
 public:
-    void pushEvent(IMessageEvent* event);
-    static ASharedPointer<IQueue>::type getQueue();
+    QueueFront();
+    ~QueueFront();
+
+    void pushEvent(IEvent* event);
 
 private:
-    QueueFront();
-    virtual ~QueueFront();
+    ASharedPointer<QueueStorage>::type m_storage;
+    AList<ASharedPointer<QueueManager>::type>::type m_managers;
+    //ASharedPointer<QueueEventHandler>::type m_eventHandlerp;
 };
 
 #endif /*QUEUE_FRONT_H*/

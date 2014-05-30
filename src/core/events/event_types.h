@@ -4,8 +4,8 @@
  copyright  2014
 ******************************/
 
-#ifndef MESSAGE_TYPES_H
-#define MESSAGE_TYPES_H
+#ifndef EVENT_TYPES_H
+#define EVENT_TYPES_H
 
 struct EventTypeSpec
 {
@@ -35,4 +35,4 @@ struct EventTypeSpec
     };
 
 };
-#endif /*MESSAGE_TYPES_H*/
+#endif /*EVENT_TYPES_H*/

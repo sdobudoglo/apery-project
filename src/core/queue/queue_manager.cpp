@@ -4,14 +4,20 @@
  copyright  2014
 ******************************/
 
+#include <QDebug>
+
 #include "queue_manager.h"
 
 QueueManager::QueueManager() : m_stopThread(false)
 {
-    //log here
     storage = QueueStorage::getStorage();
     m_thread = ASharedPointer<AThread>::type(new AThread());
     moveToThread(m_thread.data());
+    m_thread->start();
+
+    m_timer.singleShot(EventManagerWaitPeriod, this);
+
+    //log here
 }
 
 void QueueManager::manageQueue()
@@ -23,18 +29,14 @@ void QueueManager::manageQueue()
     }
 
     //check queuestorage and manage it
-    ASharedPointer<IMessageEvent>::type event = ASharedPointer<IMessageEvent>::type(storage->dequeueEvent());
+    ASharedPointer<IEvent>::type event = ASharedPointer<IEvent>::type(storage->dequeueEvent());
     if (!event.isNull())
     {
-        ;//manage event
+        qDebug() << "thread is: " << AThread::currentThreadId();
+        //manage event
     }
 
-    ATimer::singleShot(EventManagerWaitPeriod, this, CONNECTED_METHOD(manageQueue));
-}
-
-void QueueManager::start()
-{
-    ATimer::singleShot(EventManagerWaitPeriod, this, CONNECTED_METHOD(manageQueue));
+    m_timer.singleShot(EventManagerWaitPeriod, this);
 }
 
 void QueueManager::stop()
@@ -42,4 +44,9 @@ void QueueManager::stop()
     m_stopThread = true;
     m_thread->exit();
     m_thread->wait();
+}
+
+void QueueManager::callConnected()
+{
+    manageQueue();
 }
