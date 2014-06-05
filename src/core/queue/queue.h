@@ -9,7 +9,7 @@
 
 #include "base_types.h"
 #include "queue_storage.h"
-#include "queue_manager.h"
+#include "event_handler.h"
 
 class IQueue
 {
@@ -18,6 +18,8 @@ public:
     virtual ~IQueue(){}
 
     virtual void pushEvent(IEvent* event) = 0;
+    virtual void declareEventHandler(IEventHandler* event_handler) = 0;
+    virtual void removeEventHandler(EventType type, IEventHandler* event = NULL) = 0;
 };
 
 #endif /*QUEUE_H*/

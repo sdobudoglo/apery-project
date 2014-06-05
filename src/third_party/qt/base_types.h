@@ -9,6 +9,7 @@
 
 #include <QList>
 #include <QMap>
+#include <QMultiMap>
 #include <QQueue>
 #include <QSharedPointer>
 #include <QStringList>
@@ -20,6 +21,7 @@
 #include <QMutexLocker>
 #include <QTimer>
 #include <QObject>
+#include <QDebug>
 
 /* containers */
 template<typename TypeName>
@@ -32,6 +34,12 @@ template<typename KeyType, typename ValueType>
 struct AMap
 {
     typedef QMap<KeyType,ValueType> type;
+};
+
+template<typename KeyType, typename ValueType>
+struct AMultiMap
+{
+    typedef QMultiMap<KeyType,ValueType> type;
 };
 
 template<typename TypeName>
@@ -68,8 +76,20 @@ typedef QMutexLocker AMutexLocker;
 
 
 /* events */
-typedef void (*EventFinishCbk)();
-typedef quint32 EventType;
+struct EventType
+{
+    EventType(quint32 global_type, quint32 type) : m_globalType(global_type)
+      , m_type(type) {}
+
+    inline quint32 globalType() { return m_globalType; }
+    inline quint32 type() { return m_type; }
+
+    typedef quint32 EventIntType;
+
+private:
+    EventIntType m_globalType;
+    EventIntType m_type;
+};
 
 
 #endif /*BASE_TYPES_H*/

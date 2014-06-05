@@ -4,23 +4,20 @@
  copyright  2014
 ******************************/
 
-#include <QDebug>
-
 #include "queue_manager.h"
 
 QueueManager::QueueManager() : m_stopThread(false)
 {
-    storage = QueueStorage::getStorage();
-    m_thread = ASharedPointer<AThread>::type(new AThread());
-    moveToThread(m_thread.data());
-    m_thread->start();
+    m_eventStorage = QueueStorage::getStorage();
+    m_eventHandlerStorage = EventHandlerStorage::getHandlerStorage();
 
-    m_timer.singleShot(EventManagerWaitPeriod, this);
+    moveThisToThread();
+    singleShot(EventManagerWaitPeriod);
 
     //log here
 }
 
-void QueueManager::manageQueue()
+void QueueManager::manage()
 {
     if (m_stopThread)
     {
@@ -29,24 +26,21 @@ void QueueManager::manageQueue()
     }
 
     //check queuestorage and manage it
-    ASharedPointer<IEvent>::type event = ASharedPointer<IEvent>::type(storage->dequeueEvent());
+    ASharedPointer<IEvent>::type event = ASharedPointer<IEvent>::type(m_eventStorage->dequeueEvent());
     if (!event.isNull())
     {
-        qDebug() << "thread is: " << AThread::currentThreadId();
-        //manage event
+        AList<IEventHandler*>::type handlers = m_eventHandlerStorage->getHandlerByType(event->eventType());
+        for (int i=0; i<handlers.size(); i++)
+        {
+            handlers.at(i)->manageEvent(event);
+            //log here
+        }
     }
 
-    m_timer.singleShot(EventManagerWaitPeriod, this);
+    singleShot(EventManagerWaitPeriod);
 }
 
 void QueueManager::stop()
 {
     m_stopThread = true;
-    m_thread->exit();
-    m_thread->wait();
-}
-
-void QueueManager::callConnected()
-{
-    manageQueue();
 }

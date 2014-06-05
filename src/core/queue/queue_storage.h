@@ -22,7 +22,7 @@ public:
 private:
     QueueStorage();
 
-    static ASharedPointer<QueueStorage>::type storage;
+    static ASharedPointer<QueueStorage>::type m_storage;
 
     AQueue<IEvent*>::type m_hightQueue;
     AQueue<IEvent*>::type m_middleQueue;

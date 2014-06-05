@@ -6,7 +6,7 @@
 
 #include "queue_storage.h"
 
-ASharedPointer<QueueStorage>::type QueueStorage::storage;
+ASharedPointer<QueueStorage>::type QueueStorage::m_storage;
 
 QueueStorage::QueueStorage()
 {
@@ -15,19 +15,18 @@ QueueStorage::QueueStorage()
 
 ASharedPointer<QueueStorage>::type QueueStorage::getStorage()
 {
-    if (storage.isNull())
+    if (m_storage.isNull())
     {
         //log here
-        storage = ASharedPointer<QueueStorage>::type(new QueueStorage);
+        m_storage = ASharedPointer<QueueStorage>::type(new QueueStorage);
     }
-
-    return storage;
+    return m_storage;
 }
 
 void QueueStorage::clear()
 {
-    if (!storage.isNull())
-        storage.clear();
+    if (!m_storage.isNull())
+        m_storage.clear();
 }
 
 IEvent* QueueStorage::dequeueEvent()

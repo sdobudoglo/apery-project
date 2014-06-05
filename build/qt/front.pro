@@ -31,9 +31,9 @@ HEADERS += \
     $$ROOT_SRC_DIR/core/loader/constants.h \
     $$ROOT_SRC_DIR/third_party/qt/base_types.h \
     $$ROOT_SRC_DIR/third_party/qt/application.h \
-    $$ROOT_SRC_DIR/third_party/qt/timer.h \
-    $$ROOT_SRC_DIR/third_party/qt/connect.h \
+    $$ROOT_SRC_DIR/third_party/qt/single_thread.h \
     $$ROOT_SRC_DIR/core/events/event.h \
+    $$ROOT_SRC_DIR/core/events/event_handler.h \
     $$ROOT_SRC_DIR/core/events/event_types.h \
     $$ROOT_SRC_DIR/core/queue/queue_storage.h \
     $$ROOT_SRC_DIR/core/queue/queue.h \
@@ -44,10 +44,11 @@ SOURCES += \
     $$ROOT_SRC_DIR/core/loader/main.cpp \
     $$ROOT_SRC_DIR/core/loader/front_loader.cpp \
     $$ROOT_SRC_DIR/core/events/event.cpp \
+    $$ROOT_SRC_DIR/core/events/event_handler.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_storage.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_front.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_manager.cpp \
-    $$ROOT_SRC_DIR/third_party/qt/timer.cpp
+    $$ROOT_SRC_DIR/third_party/qt/single_thread.cpp
 
 
 # afront global defines

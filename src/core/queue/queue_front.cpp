@@ -9,15 +9,14 @@
 QueueFront::QueueFront()
 {
     m_storage = ASharedPointer<QueueStorage>::type(QueueStorage::getStorage());
+    m_eventHandlerStorage = ASharedPointer<EventHandlerStorage>::type(EventHandlerStorage::getHandlerStorage());
 
-    //get amount from settings
+    //FIXME:get amount from settings
     int manager_amount = QueueFrontManagetAmount;
     for(int i=0; i<manager_amount; i++)
     {
         m_managers.push_back(ASharedPointer<QueueManager>::type(new QueueManager));
     }
-
-    //init event handler
 
     //log here
 }
@@ -32,6 +31,20 @@ void QueueFront::pushEvent(IEvent *event)
         //log here
         return;
     }
-
     m_storage->enqueueEvent(event);
+}
+
+void QueueFront::declareEventHandler(IEventHandler *event_handler)
+{
+    if (!event_handler)
+    {
+        //log here
+        return;
+    }
+    m_eventHandlerStorage->declareEventHandler(event_handler);
+}
+
+void QueueFront::removeEventHandler(EventType type, IEventHandler *event)
+{
+    m_eventHandlerStorage->removeEventHandler(type, event);
 }
