@@ -22,6 +22,7 @@
 #include <QTimer>
 #include <QObject>
 #include <QDebug>
+#include <QDateTime>
 
 /* containers */
 template<typename TypeName>
@@ -64,6 +65,7 @@ struct ASharedPointer
 typedef QString AString;
 typedef QVariant AVariant;
 typedef QObject AObject;
+typedef QDateTime ADateTime;
 
 
 /* multithreading */

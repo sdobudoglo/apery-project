@@ -11,7 +11,6 @@ QueueManager::QueueManager() : m_stopThread(false)
     m_eventStorage = QueueStorage::getStorage();
     m_eventHandlerStorage = EventHandlerStorage::getHandlerStorage();
 
-    moveThisToThread();
     singleShot(EventManagerWaitPeriod);
 
     //log here

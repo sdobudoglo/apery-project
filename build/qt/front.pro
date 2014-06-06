@@ -23,7 +23,8 @@ INCLUDEPATH += \
     $$ROOT_SRC_DIR/core/queue \
     $$ROOT_SRC_DIR/core/loader \
     $$ROOT_SRC_DIR/third_party/qt \
-    $$ROOT_SRC_DIR/core/events
+    $$ROOT_SRC_DIR/core/events  \
+    $$ROOT_SRC_DIR/core/log_manager
 
 HEADERS += \
     $$ROOT_SRC_DIR/core/loader/loader.h \
@@ -38,7 +39,8 @@ HEADERS += \
     $$ROOT_SRC_DIR/core/queue/queue_storage.h \
     $$ROOT_SRC_DIR/core/queue/queue.h \
     $$ROOT_SRC_DIR/core/queue/queue_front.h \
-    $$ROOT_SRC_DIR/core/queue/queue_manager.h
+    $$ROOT_SRC_DIR/core/queue/queue_manager.h \
+    $$ROOT_SRC_DIR/core/log_manager/log_manager.h
 
 SOURCES += \
     $$ROOT_SRC_DIR/core/loader/main.cpp \
@@ -48,7 +50,8 @@ SOURCES += \
     $$ROOT_SRC_DIR/core/queue/queue_storage.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_front.cpp \
     $$ROOT_SRC_DIR/core/queue/queue_manager.cpp \
-    $$ROOT_SRC_DIR/third_party/qt/single_thread.cpp
+    $$ROOT_SRC_DIR/third_party/qt/single_thread.cpp \
+    $$ROOT_SRC_DIR/core/log_manager/log_manager.cpp
 
 
 # afront global defines

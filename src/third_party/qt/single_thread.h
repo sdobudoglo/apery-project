@@ -16,7 +16,6 @@ public:
     ASingleThread();
     virtual ~ASingleThread();
 
-    void moveThisToThread();
     void singleShot(int msec);
 
     virtual void manage();

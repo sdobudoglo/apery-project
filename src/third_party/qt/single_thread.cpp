@@ -7,18 +7,15 @@
 #include "single_thread.h"
 
 ASingleThread::ASingleThread()
-{}
+{
+    moveToThread(&m_thread);
+    m_thread.start();
+}
 
 ASingleThread::~ASingleThread()
 {
     m_thread.exit();
     m_thread.wait();
-}
-
-void ASingleThread::moveThisToThread()
-{
-    moveToThread(&m_thread);
-    m_thread.start();
 }
 
 void ASingleThread::singleShot(int msec)
